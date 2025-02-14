@@ -1,0 +1,6 @@
+.DS_Store
+*.logs
+node_modules/
+.vscode/
+../demo05/
+../demo06/
