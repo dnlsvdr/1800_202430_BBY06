@@ -40,14 +40,14 @@ a img{
   object-fit: cover;
 }
 body, html {
-  height: 125%;
+  height: 100%;
 }
 
 .hero-image {
 background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://www.thespruce.com/thmb/DKPD4w52xP7DHSsfsncCN6oYdn4=/750x0/filters:no_upscale():max_bytes(150000):strip_icc()/unusual-houseplants-4151147-hero-ba33b38271444d28ae082c4ea8f2089e.jpg");
 
 /* Set a specific height */
-height: 50%;
+height: 90%;
 
 /* Position and center the image to scale nicely on all screens */
 background-position: center;
