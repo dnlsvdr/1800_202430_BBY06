@@ -33,8 +33,6 @@
     <!-- Your HTML Layout go here -->
     <body>
     <nav id="navbarPlaceholder"></nav>
- 
-    
         <div class="hero-text" id="home">
         <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
@@ -46,11 +44,19 @@
       </div>
       </nav>
 
+      <div class="search">
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+
     <div class="footer">
       <div class="comments"><img src="./images/comments.png" alt="Comments"></div>
       <div class="home"><img src="./images/home.png" alt="Home"></div>
       <div class="settings"><img src="./images/settings.png" alt="Settings"></div>
     </div> 
+
     <!------------------------------>
     <!-- Stuff for body goes here -->
 
@@ -59,7 +65,7 @@
     <!---------------------------------------------->
 
     <!-- Link to scripts of your own -->
-    <scriptsrc="./scripts/firebaseAPI_Plantpal.js"></script>
+    <!--<script type="module" src="./scripts/firebaseAPI_Plantpal.js"></script> -->
     <!-- <script src="./scripts/script.js"></script> -->
 
 </body>

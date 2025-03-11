@@ -1,6 +1,7 @@
 // Import Firebase SDK via CDN for ES Modules
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js';
+import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
 
 // Firebase configuration
 const firebaseConfig = {
@@ -15,6 +16,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig); 
 const auth = getAuth(app);  // Auth instance
+const db = getFirestore(app); //Firestore
 
 // Login Function (Existing Users)
 document.getElementById("loginButton").addEventListener("click", function() {
@@ -51,3 +53,23 @@ document.getElementById("signUpButton").addEventListener("click", function() {
         alert("Error: " + error.message);
     });
 });
+
+//Function to add plant document to Firestore 
+const addPlant = async(plantDetails) => {
+  try{
+    const docRef = await addDoc(collection(db, "Plant Information"));
+    console.log("Document written with ID: ", docRef.id);
+  } 
+  catch (error) {
+    console.error("Error adding Document: ", error);
+  }
+}
+
+//Fetch the json file
+fetch(`https://perenual.com/api/v2/species/details/1?key=sk-fj6L67cfcde3989809080`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+
+
+  
