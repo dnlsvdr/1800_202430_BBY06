@@ -26,14 +26,21 @@
     <!-- <link rel="stylesheet" href="./styles/style.css"> -->
     <link rel="stylesheet" href="./styles/style.css">
 </head>
-
+<template id="addedplants">
+  <div class="added-plants">
+      <img class="plant-image" src=" ..." alt="..." />
+      <div class="card-body">
+          <h5 class="plant-name">plant name</h5>
+          <p class="next-water-date">in ??? days</p>
+      </div>
+  </div>
+</template>
 
 
     <!------------------------------>
     <!-- Your HTML Layout go here -->
     <body>
-    <nav id="navbarPlaceholder"></nav>
-        <div class="hero-text" id="home">
+      <nav id="navbarPlaceholder"></nav>
         <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
@@ -48,14 +55,19 @@
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
+          <button class="add-plants" type="button">+</button>
         </form>
       </div>
 
-    <div class="footer">
-      <div class="comments"><img src="./images/comments.png" alt="Comments"></div>
-      <div class="home"><img src="./images/home.png" alt="Home"></div>
-      <div class="settings"><img src="./images/settings.png" alt="Settings"></div>
-    </div> 
+      <div class="container">
+        <div id="plants-go-here" class="addedplants">
+      </div>
+
+      <div class="footer">
+        <div class="comments"><img src="./images/comments.png" alt="Comments"></div>
+        <div class="home"><img src="./images/home.png" alt="Home"></div>
+        <div class="settings"><img src="./images/settings.png" alt="Settings"></div>
+      </div> 
 
     <!------------------------------>
     <!-- Stuff for body goes here -->
