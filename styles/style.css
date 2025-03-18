@@ -163,3 +163,7 @@ position: relative;
 #addbutton{
     text-decoration: none;
 }
+
+.container {
+    min-height: 90%;
+}
