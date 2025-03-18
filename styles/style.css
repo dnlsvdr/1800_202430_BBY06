@@ -167,3 +167,7 @@ position: relative;
 .container {
     min-height: 90%;
 }
+
+.plant-img {
+    width: 100%;
+}
