@@ -8,14 +8,16 @@ a img{
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas: 
         "comment home settings"; 
-    position: fixed;
-    bottom: 0;
-    left: 0;
     width: 100%;
-    background-color: lightgray; 
+    background-color: #447241; 
     padding: 10px;
 }
-
+.container-fluid{
+    background-color: #447241;
+}
+.navbar{
+    padding:0%;
+}
 .comments {
     grid-area: comment;
 }
@@ -41,6 +43,7 @@ a img{
 }
 body, html {
   height: 100%;
+  width: 100%;
 }
 
 .hero-image {
@@ -108,6 +111,7 @@ position: relative;
 
 .search{
     width: 100%;
+    margin: 1%;
 }
 
 .add-plants{
@@ -122,14 +126,40 @@ position: relative;
     justify-content: center;
 }
 
-.added-plants{
+/* css for the template card to be the same size */
+.card {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 8rem auto;
     width: 100%;
-    height: 2rem;
+    height: 8rem;
+    margin-bottom: 1%;
 }
 
-.plant-image{
-    height: 1.8rem;
-    width: 1.8rem;
+.card-image {
+    height: 7.5rem;
+    width: 7.5rem;
+    margin: 1%;
+}
+
+.card-body {
+  padding: 10px;
+  height: 40%;        
+  box-sizing: border-box;
+}
+
+.card-title, .card-type {
+  margin: 0;
+  padding-bottom: 1rem;
+}
+
+.col-12 mb-3{
+    margin: 0;
+}
+
+.plants-go-here {
+    display: block;
+}
+
+#addbutton{
+    text-decoration: none;
 }
