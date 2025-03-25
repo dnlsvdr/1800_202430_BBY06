@@ -3,7 +3,6 @@ function displayPlantInfo() {
   let plantDocID = params.searchParams.get("docID");
   console.log("Plant docID:", plantDocID);
 
-
   const currentUser = firebase.auth().currentUser;
   if (!currentUser) {
     console.error("User is not authenticated.");
@@ -11,9 +10,9 @@ function displayPlantInfo() {
   }
   const uid = currentUser.uid;
 
-  db.collection("users") //user collection
-    .doc(uid) //user uid (document)
-    .collection("plants")//plant sub collection
+  db.collection("users")
+    .doc(uid)
+    .collection("plants")
     .doc(plantDocID)
     .get()
     .then(doc => {
@@ -24,11 +23,18 @@ function displayPlantInfo() {
         let plantDescription = thisPlant.description; // Plant description
         let plantCareGuide = thisPlant.careGuide;     // Plant care guide
 
-
         document.getElementById("plantName").innerHTML = plantName;
         document.querySelector(".plant-img").src = plantImage;
         document.getElementById("description").innerHTML = plantDescription;
         document.getElementById("careGuide").innerHTML = plantCareGuide;
+
+        // Pre-fill water schedule if data exists
+        if (thisPlant.lastWaterDate) {
+          document.getElementById("lastWaterDate").value = thisPlant.lastWaterDate;
+        }
+        if (thisPlant.waterInterval) {
+          document.getElementById("waterInterval").value = thisPlant.waterInterval;
+        }
       } else {
         console.error("No plant document found for the given docID.");
       }
