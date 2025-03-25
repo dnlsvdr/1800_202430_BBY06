@@ -146,3 +146,31 @@ function updateLastWaterDateIfPast(plantDocID) {
   });
 }
 
+document.getElementById("removePlantButton").addEventListener("click", function() {
+  // Ask for confirmation before deletion
+  if (confirm("Are you sure you want to remove this plant? This action cannot be undone.")) {
+    let params = new URL(window.location.href);
+    let plantDocID = params.searchParams.get("docID");
+    
+    const currentUser = firebase.auth().currentUser;
+    if (!currentUser) {
+      console.error("User not authenticated.");
+      return;
+    }
+    const uid = currentUser.uid;
+
+    // Delete the plant document from Firestore
+    db.collection("users")
+      .doc(uid)
+      .collection("plants")
+      .doc(plantDocID)
+      .delete()
+      .then(() => {
+        // Redirect to home.html after deletion
+        window.location.href = "home.html";
+      })
+      .catch((error) => {
+        console.error("Error removing plant:", error);
+      });
+  }
+});
