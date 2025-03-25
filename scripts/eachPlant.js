@@ -56,20 +56,87 @@ document.addEventListener("DOMContentLoaded", function() {
   // Tab switching functionality
   plantInfoTab.addEventListener("click", function() {
       plantInfoContent.classList.remove("hidden"); 
-      waterScheduleContent.classList.add("hidden");//will hide the water reminder tab once plant info is clicked
+      waterScheduleContent.classList.add("hidden");
       plantInfoTab.classList.add("active");
       waterScheduleTab.classList.remove("active");
   });
 
   waterScheduleTab.addEventListener("click", function() {
-      plantInfoContent.classList.add("hidden"); //will hide the plant into tab once water reminder is clicked
+      plantInfoContent.classList.add("hidden"); 
       waterScheduleContent.classList.remove("hidden");
       plantInfoTab.classList.remove("active");
       waterScheduleTab.classList.add("active");
   });
-
-
-  
 });
 
+// Save Water Schedule
+document.querySelector('.save-button').addEventListener('click', function() {
+  const lastWaterDateInput = document.getElementById('lastWaterDate').value;
+  const waterIntervalInput = document.getElementById('waterInterval').value;
+
+  if (!lastWaterDateInput || !waterIntervalInput) {
+    return;
+  }
+
+  let params = new URL(window.location.href);
+  let plantDocID = params.searchParams.get("docID");
+
+  const currentUser = firebase.auth().currentUser;
+  if (!currentUser) {
+    return;
+  }
+  const uid = currentUser.uid;
+
+  db.collection("users")
+    .doc(uid)
+    .collection("plants")
+    .doc(plantDocID)
+    .update({
+      lastWaterDate: lastWaterDateInput, // Stored as YYYY-MM-DD
+      waterInterval: parseInt(waterIntervalInput)
+    })
+    .then(() => {
+      // After updating water schedule, check if an update is needed, then redirect
+      updateLastWaterDateIfPast(plantDocID).then(() => {
+        window.location.href = "home.html";
+      });
+    })
+    .catch((error) => {
+      console.error("Error updating water schedule:", error);
+    });
+});
+
+// Function to Update Last Water Date if Overdue
+function updateLastWaterDateIfPast(plantDocID) {
+  const currentUser = firebase.auth().currentUser;
+  if (!currentUser) {
+    return Promise.resolve();
+  }
+  const uid = currentUser.uid;
+  const plantDocRef = db.collection("users").doc(uid).collection("plants").doc(plantDocID);
+  
+  return plantDocRef.get().then(doc => {
+    if (doc.exists) {
+      let data = doc.data();
+      let lastWaterDate = new Date(data.lastWaterDate);
+      let waterInterval = data.waterInterval; // in days
+      const msPerDay = 24 * 60 * 60 * 1000;
+      let nextWaterDate = new Date(lastWaterDate.getTime() + waterInterval * msPerDay);
+      const now = new Date();
+      
+      if (now > nextWaterDate) {
+        while (nextWaterDate < now) {
+          lastWaterDate = nextWaterDate;
+          nextWaterDate = new Date(nextWaterDate.getTime() + waterInterval * msPerDay);
+        }
+        return plantDocRef.update({
+          lastWaterDate: lastWaterDate.toISOString().split("T")[0]
+        });
+      }
+    }
+    return Promise.resolve();
+  }).catch(error => {
+    console.error("Error fetching plant document:", error);
+  });
+}
 
