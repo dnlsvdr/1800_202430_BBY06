@@ -141,16 +141,34 @@ position: relative;
     margin: 1%;
 }
 
+.img-container{
+    width: 100%;
+    height: 25rem;
+    overflow: hidden;
+}
+
+#img-size{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 .card-body {
   padding: 10px;
   height: 40%;        
   box-sizing: border-box;
 }
 
-.card-title, .card-type {
+.card-title {
   margin: 0;
   padding-bottom: 1rem;
 }
+
+.water-date{
+    margin-bottom: 0;
+}
+
 
 .col-12 mb-3{
     margin: 0;
@@ -170,4 +188,54 @@ position: relative;
 
 .plant-img {
     width: 100%;
+}
+
+/*tab container*/
+.tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    align-items: center;
+    justify-content: center;
+    gap: 5px; 
+}
+
+.tab.active {
+    border-bottom: 2px solid #28a745; 
+}
+
+/* Tab Content */
+.tab-content {
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+/* Hide non-active content */
+.hidden {
+    display: none;
+}
+
+/* Input Fields */
+.input-field {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #28a745;
+    color: black;
+}
+
+/* Save Button in the water sched tab */
+.save-button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.save-button:hover {
+    background-color: #1e7d34;
 }

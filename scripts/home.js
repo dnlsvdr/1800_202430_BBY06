@@ -17,7 +17,9 @@ document.addEventListener("DOMContentLoaded", function () {
         newCard.querySelector(".card-title").innerHTML = plant.name;
         newCard.querySelector(".card-image").src = plant.image;
         newCard.querySelector(".card-type").innerHTML = plant.type;
-        newCard.querySelector(".card-water").innerHTML = plant.water;
+        newCard.querySelector(".water-date").innerHTML = `Water in ${plant.waterInterval} days`;
+        newCard.querySelector(".next-water").innerHTML = plant.nextWater;
+
         
         // Add click event to redirect to each plant page
         let clickableCard = newCard.querySelector(".clickableCard");
@@ -61,7 +63,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 name: data.name,
                 type: data.type,
                 image: data.image,
-                water: data.water
+                water: data.water,
+                waterInterval: data.waterInterval,
+                nextWater: data.nextWaterDate
               });
             });
             console.log("All plants:", allPlants);

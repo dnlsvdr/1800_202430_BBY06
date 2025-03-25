@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
             newCard.querySelector('.card-title').innerHTML = plant.name;
             newCard.querySelector('.card-image').src = plant.image;
             newCard.querySelector('.card-type').innerHTML = plant.type;
-            newCard.querySelector(".card-water").innerHTML = plant.water;
+            newCard.querySelector(".water-date").innerHTML = plant.water;
             let clickableCard = newCard.querySelector('.clickableCard');
             clickableCard.addEventListener('click', function () {
                 window.location.href = "addEachPlant.html?docID=" + plant.docID;
@@ -36,8 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
     db.collection("Plant Information").onSnapshot(snapshot => {
 
         console.log("Snapshot received, count:", snapshot.docs.length);
-        
-       
+
         allPlants = [];
         snapshot.forEach(doc => {
             const data = doc.data();

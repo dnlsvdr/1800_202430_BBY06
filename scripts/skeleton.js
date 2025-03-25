@@ -12,4 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'settings.html';
         });
     }
+
+    const review = document.getElementById('review');
+    if (review) {
+        review.addEventListener('click', () => {
+            window.location.href = 'review.html';
+        });
+    }
 });

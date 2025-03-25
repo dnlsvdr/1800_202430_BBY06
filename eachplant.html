@@ -35,19 +35,56 @@
 
     <!-- the body of your page goes here -->
     <div class="container">
-        <h1><span id="plantName"></span></h1>
-        <img class="plant-img responsive" src=""/>
-        <div id="details-go-here"></div>
-        <br>
-        <button type="button">Plant Information</button>
-        <button type="button">Water Reminder</button>
-        <br>    
-        <br>
-        <h2>Description</h2>
-        <div id="description"> </div>
-        <h2>Care Recommendations</h2>
-        <div id="careGuide"></div>
-    </div>
+      <h1><span id="plantName"></span></h1>
+      
+      <!-- Image Container -->
+      <div class="img-container">
+          <img id="img-size" class="plant-img responsive" src=""/>
+      </div>
+  
+      <div id="details-go-here"></div>
+  
+      <!-- Tab Buttons -->
+      <div class="tabs">
+          <button type="button" id="plantInfoTab" class="tab active">Plant Information</button>
+          <button type="button" id="waterScheduleTab" class="tab">Water Reminder</button>
+      </div>
+  
+      <!-- Tab Content -->
+      <div id="plantInfoContent" class="tab-content">
+          <h2>Description</h2>
+          <div id="description"></div>
+          <h2>Care Recommendations</h2>
+          <div id="careGuide"></div>
+          <button id="review">Write a review</button>
+
+<template id="reviewCardTemplate">
+  <div class="review-card p-3 mb-3 border rounded">
+    <h5 class="title"></h5>
+    <div class="star-rating mb-1"></div>
+    <p class="difficulty"></p>
+    <p class="comment"></p>
+    <p class="petFriendly"></p>
+    <small class="time text-muted"></small>
+  </div>
+</template>
+
+
+          
+      </div>
+  
+      <div id="waterScheduleContent" class="tab-content hidden">
+          <h2>Watering Schedule</h2>
+          <label for="lastWaterDate">Last Water Date</label>
+          <input type="date" id="lastWaterDate" class="input-field">
+  
+          <label for="waterInterval">Watering Interval (days)</label>
+          <input type="number" id="waterInterval" class="input-field">
+  
+          <button class="save-button">Save</button>
+      </div>
+  </div>
+  
     
     <!-- stuff -->
 
@@ -61,5 +98,6 @@
       <script src="./scripts/firebase.js"></script> 
     <script src="./scripts/eachPlant.js"></script> 
     <script src="./scripts/skeleton.js"></script>
+    <script src="./scripts/water.js"></script>
     </body>
 </html>
