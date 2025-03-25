@@ -111,7 +111,8 @@ position: relative;
 
 .search{
     width: 100%;
-    margin: 1%;
+    margin-top:3%;
+    margin-bottom: 3%;
 }
 
 .add-plants{
@@ -124,6 +125,12 @@ position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+}
+
+#addPlantButton{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
 }
 
 /* css for the template card to be the same size */
@@ -176,10 +183,6 @@ position: relative;
 
 .plants-go-here {
     display: block;
-}
-
-#addbutton{
-    text-decoration: none;
 }
 
 .container {
