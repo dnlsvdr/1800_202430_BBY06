@@ -68,14 +68,26 @@ document.addEventListener("DOMContentLoaded", function () {
           allPlants = [];
           snapshot.forEach(doc => {
             const data = doc.data();
-            let nextWater = calculateNextWaterDate(data.lastWaterDate, data.waterInterval);
+            let waterIntervalDisplay;
+            let nextWaterDisplay;
+  
+            // Check if water reminder data is set
+            if (data.waterInterval && data.lastWaterDate) {
+              waterIntervalDisplay = `${data.waterInterval}`;
+              let nextWater = calculateNextWaterDate(data.lastWaterDate, data.waterInterval);
+              nextWaterDisplay = nextWater.toDateString();
+            } else {
+              waterIntervalDisplay = "<u>N/A<u>";
+              nextWaterDisplay = "Not set yet";
+            }
+  
             allPlants.push({
               docID: doc.id,
               name: data.name,
               type: data.type,
               image: data.image,
-              waterInterval: data.waterInterval,
-              nextWater: nextWater.toDateString()
+              waterInterval: waterIntervalDisplay,
+              nextWater: nextWaterDisplay
             });
           });
           filterAndDisplayCards();
@@ -84,4 +96,5 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
   });
+  
 });

@@ -16,7 +16,8 @@ function displayPlantInfo() {
 
         // Display only specific fields
         document.getElementById("plantName").innerHTML = fetchedPlantData.name;
-        document.querySelector(".plant-img").src = fetchedPlantData.image;
+        document.querySelector(".plant-img").src = fetchedPlantData.image2;
+        
         document.getElementById("description").innerHTML = fetchedPlantData.description;
       } else {
         console.error("No such document in Plant Information!");
@@ -41,8 +42,11 @@ document.getElementById("addPlantBtn").addEventListener("click", function () {
   // For example, here we add "water" and "careGuide" (if they exist in fetchedPlantData).
   const plantData = {
     name: document.getElementById("plantName").textContent,
-    image: document.querySelector(".plant-img").src,
+    image2: document.querySelector(".plant-img").src,
     description: document.getElementById("description").innerHTML,
+    image: fetchedPlantData.image, 
+    sunlight: fetchedPlantData.sunlight,
+    fertilize: fetchedPlantData.fertilizer,
     water: fetchedPlantData.water || "",     
     careGuide: fetchedPlantData.careGuide || "",
     type: fetchedPlantData.type || "" 

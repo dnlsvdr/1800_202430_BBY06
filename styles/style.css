@@ -4,22 +4,33 @@ a img{
 }
 
 .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas: 
         "comment home settings"; 
-    width: 100%;
     background-color: #447241; 
     padding: 10px;
+    z-index: 100; /* Optional: ensures the footer is on top of other content */
 }
+
 .container-fluid{
     background-color: #447241;
+    padding: 5px;
 }
-.navbar{
-    padding:0%;
+.navbar {
+    position: fixed;
+ 
+    width: 100%;
+    z-index: 1000; 
+    padding: 0;
 }
 .comments {
     grid-area: comment;
+    
 }
 
 .home {
@@ -187,6 +198,8 @@ position: relative;
 
 .container {
     min-height: 90%;
+    padding-bottom: 60px;
+    padding-top: 60px;
 }
 
 .plant-img {
@@ -200,6 +213,12 @@ position: relative;
     align-items: center;
     justify-content: center;
     gap: 5px; 
+    margin: 5px;
+    border: none;
+    border-bottom: 2px solid transparent;
+    font-size: 16px;
+    cursor: pointer;
+   
 }
 
 .tab.active {
@@ -208,7 +227,7 @@ position: relative;
 
 /* Tab Content */
 .tab-content {
-    max-width: 600px;
+    width: 100%;
     margin-top: 20px;
 }
 
@@ -230,15 +249,50 @@ position: relative;
 
 /* Save Button in the water sched tab */
 .save-button {
-    background-color: #28a745;
     color: white;
-    padding: 10px 15px;
+    padding: 10px 40px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    margin-top: 10px;
+    margin-top: 20px;
+    margin-bottom:30px;
 }
 
 .save-button:hover {
     background-color: #1e7d34;
 }
+
+#about-img{
+    width: 200px;
+    height:200px;
+}
+
+.care-container {
+    width: 100%;
+    border-collapse: collapse; /* Removes space between cells */
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .care-container th,
+  .care-container td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    
+    text-align: center;
+    
+  }
+
+  #removePlantButton{
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+  
+  
+  
+  .nav-icon.active-icon {
+    filter: brightness(0) saturate(100%) invert(59%) sepia(98%) saturate(336%) hue-rotate(61deg) brightness(94%) contrast(92%);
+    opacity: 1;
+  }
+  
+

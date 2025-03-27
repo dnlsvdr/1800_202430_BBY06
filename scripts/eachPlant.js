@@ -18,15 +18,21 @@ function displayPlantInfo() {
     .then(doc => {
       if (doc.exists) {
         let thisPlant = doc.data();
-        let plantImage = thisPlant.image;           // URL for the plant image
+        let plantImage = thisPlant.image2;           // URL for the plant image
         let plantName = thisPlant.name;             // Plant name
         let plantDescription = thisPlant.description; // Plant description
         let plantCareGuide = thisPlant.careGuide;     // Plant care guide
+        let plantSunlight = thisPlant.sunlight;
+        let plantWater = thisPlant.water;
+        let plantFertilize = thisPlant.fertilize;
 
         document.getElementById("plantName").innerHTML = plantName;
         document.querySelector(".plant-img").src = plantImage;
         document.getElementById("description").innerHTML = plantDescription;
         document.getElementById("careGuide").innerHTML = plantCareGuide;
+        document.getElementById("sunlight").innerHTML = plantSunlight;
+        document.getElementById("water").innerHTML = plantWater;
+        document.getElementById("fertilizer").innerHTML = plantFertilize;
 
         // Pre-fill water schedule if data exists
         if (thisPlant.lastWaterDate) {

@@ -35,11 +35,31 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             console.log("Retrieved saved theme color:", savedColor);
             document.body.style.backgroundColor = savedColor;
+            document.querySelectorAll('.list-group-item').forEach(item => {
+                item.style.backgroundColor = savedColor;
+              });
+            
           })
           .catch(error => {
             console.error("Error retrieving theme color:", error);
           });
       }
     });
+
+
+  const currentPage = window.location.pathname.split("/").pop();
+
+  if (currentPage === "home.html") {
+    document.querySelector("#home img").classList.add("active-icon");
+  } else if (currentPage === "comments.html") {
+    document.querySelector("#comments img").classList.add("active-icon");
+  } else if (currentPage === "settings.html") {
+    document.querySelector("#settings img").classList.add("active-icon");
+  }
+
+
   });
+
+
+
   

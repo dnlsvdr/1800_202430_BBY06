@@ -27,7 +27,7 @@
   <nav id="navbarPlaceholder"></nav>
   <nav class="navbar">
     <div class="container-fluid">
-      <a class="navbar-brand text-white" href="#">
+      <a class="navbar-brand text-white" href="home.html">
         <img src="./images/plantpal_logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
         PlantPal
       </a>
@@ -48,18 +48,37 @@
 
     <!-- Tab Buttons -->
     <div class="tabs">
-      <button type="button" id="plantInfoTab" class="tab active">Plant Information</button>
-      <button type="button" id="waterScheduleTab" class="tab">Water Reminder</button>
+      <button type="button" id="plantInfoTab" class="tab active btn btn-success">Plant Information</button>
+      <button type="button" id="waterScheduleTab" class="tab btn btn-success">Water Reminder</button>
     </div>
 
     <!-- Tab Content -->
     <div id="plantInfoContent" class="tab-content">
       <h2>Description</h2>
       <div id="description"></div>
+      <br>
       <h2>Care Recommendations</h2>
-      <div id="careGuide"></div>
-      <button id="review">Write a review</button>
-      <button id="removePlantButton">Remove Plant</button>
+      <div class="care" id="careGuide"></div>
+      <table class="care-container">
+        <thead>
+          <tr>
+            <th>Sunlight</th>
+            <th>Water</th>
+            <th>Fertilizer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="sun" id="sunlight"></div></td>
+            <td><div class="water" id="water"></div></td>
+            <td><div class="fertilize" id="fertilizer"></div></td>
+          </tr>
+        </tbody>
+      </table>
+      
+
+      <br>
+      <button class="btn btn-success"id="removePlantButton">Remove Plant</button>
 
       <template id="reviewCardTemplate">
         <div class="review-card p-3 mb-3 border rounded">
@@ -84,7 +103,7 @@
       <label for="waterInterval">Watering Interval (days)</label>
       <input type="number" id="waterInterval" class="input-field">
 
-      <button class="save-button">Save</button>
+      <button class="save-button btn btn-success">Save</button>
     </div>
   </div>
 
@@ -92,12 +111,14 @@
   <!-- stuff -->
 
   <!-- our own footer goes here-->
-  <nav id="footerPlaceholder"></nav>
+
+ 
   <div class="footer">
-    <div class="comments" id="comments"><img src="./images/comment2.png" alt="Comments"></div>
-    <div class="home" id="home"><img src="./images/home2.png" alt="Home"></div>
-    <div class="settings" id="settings"><img src="./images/settings2.png" alt="Settings"></div>
+    <div class="comments" id="comments"><img src="./images/comments3.png" alt="Comments" class="nav-icon"></div>
+    <div class="home" id="home"><img src="./images/home2.png" alt="Home" class="nav-icon"></div>
+    <div class="settings" id="settings"><img src="./images/settings2.png" alt="Settings" class="nav-icon"></div>
   </div>
+  
   <script src="./scripts/firebase.js"></script>
   <script src="./scripts/eachPlant.js"></script>
   <script src="./scripts/skeleton.js"></script>

@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Locate the Theme button (assuming its text is "Theme")
-    const themeButton = Array.from(document.querySelectorAll('button.btn.btn-secondary.w-100.mb-2'))
+    const themeButton = Array.from(document.querySelectorAll('button.btn.btn-success.w-100.mb-2'))
       .find(btn => btn.textContent.trim() === "Theme");
     if (!themeButton) return;
   
