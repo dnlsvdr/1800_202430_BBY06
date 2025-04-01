@@ -4,3 +4,7 @@ node_modules/
 .vscode/
 ../demo05/
 ../demo06/
+firebase.json
+firestore.indexes.json
+firestore.rules
+.firebaserc
