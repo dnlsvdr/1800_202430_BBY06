@@ -4,26 +4,40 @@ document.addEventListener("DOMContentLoaded", function () {
   const searchInput = document.getElementById("searchInput");
   const container = document.getElementById("plants-go-here");
 
-  // Helper function: calculate next water date from lastWaterDate and waterInterval (in days)
+
   function calculateNextWaterDate(lastWaterDate, waterInterval) {
+    // Convert the lastWaterDate into a Date object.
     let lastWater = new Date(lastWaterDate);
     const msPerDay = 24 * 60 * 60 * 1000;
+    
+    // Add the waterInterval days to the last water date.
     let nextWaterDate = new Date(lastWater.getTime() + waterInterval * msPerDay);
+    
+    // If the computed next water date is in the past, keep adding waterInterval days
+    // until the nextWaterDate is in the future.
     while (nextWaterDate < new Date()) {
       lastWater = nextWaterDate;
-      nextWaterDate = new Date(nextWaterDate.getTime() + waterInterval * msPerDay);
+      nextWaterDate = new Date(lastWater.getTime() + waterInterval * msPerDay);
     }
     return nextWaterDate;
   }
+  
 
   // Function to display plant cards based on an array of plant objects
   function displayCards(plantsArray) {
+   
+    plantsArray.sort((a, b) => {
+      const dateA = a.nextWaterDate instanceof Date ? a.nextWaterDate : new Date(8640000000000000);
+      const dateB = b.nextWaterDate instanceof Date ? b.nextWaterDate : new Date(8640000000000000);
+      return dateA - dateB;
+    });
     container.innerHTML = ""; // Clear container before displaying
 
     if (plantsArray.length === 0) {
-      container.innerHTML = "<p>No results found</p>";
+      container.innerHTML = "<p>No plants added</p>";
       return;
     }
+
     plantsArray.forEach(plant => {
       let newCard = cardTemplate.content.cloneNode(true);
       newCard.querySelector(".card-title").innerHTML = plant.name;
@@ -32,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
       newCard.querySelector(".water-date").innerHTML = `Water every ${plant.waterInterval} days`;
       newCard.querySelector(".next-water").innerHTML = `Next water: ${plant.nextWater}`;
       
-      // Add click event to redirect to each plant page
+    
       let clickableCard = newCard.querySelector(".clickableCard");
       clickableCard.addEventListener("click", function () {
         window.location.href = "eachPlant.html?docID=" + plant.docID;
@@ -54,10 +68,10 @@ document.addEventListener("DOMContentLoaded", function () {
     displayCards(filteredPlants);
   }
 
-  // Listen for changes in the search input to filter plants in real time
+
   searchInput.addEventListener("keyup", filterAndDisplayCards);
 
-  // Get the current authenticated user and listen for their plants
+  
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
       const uid = user.uid;
@@ -70,24 +84,30 @@ document.addEventListener("DOMContentLoaded", function () {
             const data = doc.data();
             let waterIntervalDisplay;
             let nextWaterDisplay;
-  
-            // Check if water reminder data is set
+            let nextWater;     
+            let nextWaterDate; 
+
+           
             if (data.waterInterval && data.lastWaterDate) {
               waterIntervalDisplay = `${data.waterInterval}`;
-              let nextWater = calculateNextWaterDate(data.lastWaterDate, data.waterInterval);
+              
+              nextWater = calculateNextWaterDate(data.lastWaterDate, data.waterInterval);
               nextWaterDisplay = nextWater.toDateString();
+              nextWaterDate = nextWater;
             } else {
-              waterIntervalDisplay = "<u>N/A<u>";
+              waterIntervalDisplay = "<u>N/A</u>";
               nextWaterDisplay = "Not set yet";
+              nextWaterDate = null;
             }
-  
+
             allPlants.push({
               docID: doc.id,
               name: data.name,
               type: data.type,
               image: data.image,
-              waterInterval: waterIntervalDisplay,
-              nextWater: nextWaterDisplay
+              waterInterval: waterIntervalDisplay, 
+              nextWater: nextWaterDisplay,         
+              nextWaterDate: nextWaterDate           
             });
           });
           filterAndDisplayCards();
@@ -96,5 +116,4 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
   });
-  
 });

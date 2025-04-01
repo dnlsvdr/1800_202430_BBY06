@@ -1,5 +1,4 @@
-
-a img{
+a img {
     object-fit: cover;
 }
 
@@ -10,27 +9,30 @@ a img{
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: 
-        "comment home settings"; 
-    background-color: #447241; 
+    grid-template-areas:
+        "comment home settings";
+    background-color: #447241;
     padding: 10px;
-    z-index: 100; /* Optional: ensures the footer is on top of other content */
+    z-index: 100;
+    /* Optional: ensures the footer is on top of other content */
 }
 
-.container-fluid{
+.container-fluid {
     background-color: #447241;
     padding: 5px;
 }
+
 .navbar {
     position: fixed;
- 
+
     width: 100%;
-    z-index: 1000; 
+    z-index: 1000;
     padding: 0;
 }
+
 .comments {
     grid-area: comment;
-    
+
 }
 
 .home {
@@ -46,28 +48,30 @@ a img{
     height: 30px;
     object-fit: cover;
     display: block;
-    margin: auto; 
+    margin: auto;
 }
 
-a img{
-  object-fit: cover;
+a img {
+    object-fit: cover;
 }
-body, html {
-  height: 100%;
-  width: 100%;
+
+body,
+html {
+    height: 100%;
+    width: 100%;
 }
 
 .hero-image {
-background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/plantpal_bg.jpg');
- 
-/* Set a specific height */
-height: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/plantpal_bg.jpg');
 
-/* Position and center the image to scale nicely on all screens */
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
-position: relative;
+    /* Set a specific height */
+    height: 100%;
+
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
 }
 
 .hero-text {
@@ -81,52 +85,53 @@ position: relative;
     z-index: 1000;
 }
 
-#home{
+#home {
     top: 3%;
     width: 100%;
 }
 
-.btn btn-warning{
+.btn btn-warning {
     background-color: green;
 }
 
-#header{
+#header {
     font-size: 60px;
     position: relative;
     bottom: 20px;
 }
-.mb-3{
+
+.mb-3 {
     margin: 20px !important;
 }
 
-#message{
+#message {
     font-size: 15px;
     position: relative;
     bottom: 30px;
-    
+
 }
 
-#create{
+#create {
     font-size: 15px;
     position: relative;
     bottom: 10px;
 }
 
-.btn-success{
+.btn-success {
     font-size: 15px;
 }
 
-#headername{
+#headername {
     font-size: 50px;
 }
 
-.search{
+.search {
     width: 100%;
-    margin-top:3%;
+    margin-top: 3%;
     margin-bottom: 3%;
 }
 
-.add-plants{
+.add-plants {
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -138,7 +143,7 @@ position: relative;
     justify-content: center;
 }
 
-#addPlantButton{
+#addPlantButton {
     width: 40px;
     height: 40px;
     cursor: pointer;
@@ -159,13 +164,13 @@ position: relative;
     margin: 1%;
 }
 
-.img-container{
+.img-container {
     width: 100%;
     height: 25rem;
     overflow: hidden;
 }
 
-#img-size{
+#img-size {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -173,22 +178,22 @@ position: relative;
 }
 
 .card-body {
-  padding: 10px;
-  height: 40%;        
-  box-sizing: border-box;
+    padding: 10px;
+    height: 40%;
+    box-sizing: border-box;
 }
 
 .card-title {
-  margin: 0;
-  padding-bottom: 1rem;
+    margin: 0;
+    padding-bottom: 1rem;
 }
 
-.water-date{
+.water-date {
     margin-bottom: 0;
 }
 
 
-.col-12 mb-3{
+.col-12 mb-3 {
     margin: 0;
 }
 
@@ -209,20 +214,20 @@ position: relative;
 /*tab container*/
 .tabs {
     display: grid;
-    grid-template-columns: 1fr 1fr; 
+    grid-template-columns: 1fr 1fr;
     align-items: center;
     justify-content: center;
-    gap: 5px; 
+    gap: 5px;
     margin: 5px;
     border: none;
     border-bottom: 2px solid transparent;
     font-size: 16px;
     cursor: pointer;
-   
+
 }
 
 .tab.active {
-    border-bottom: 2px solid #28a745; 
+    border-bottom: 2px solid #28a745;
 }
 
 /* Tab Content */
@@ -255,44 +260,54 @@ position: relative;
     cursor: pointer;
     border-radius: 5px;
     margin-top: 20px;
-    margin-bottom:30px;
+    margin-bottom: 30px;
 }
 
 .save-button:hover {
     background-color: #1e7d34;
 }
 
-#about-img{
+#about-img {
     width: 200px;
-    height:200px;
+    height: 200px;
 }
 
 .care-container {
     width: 100%;
-    border-collapse: collapse; /* Removes space between cells */
+    border-collapse: collapse;
+    /* Removes space between cells */
     margin-top: 20px;
     margin-bottom: 20px;
-  }
-  
-  .care-container th,
-  .care-container td {
+}
+
+.care-container th,
+.care-container td {
     border: 1px solid #ccc;
     padding: 10px;
-    
-    text-align: center;
-    
-  }
 
-  #removePlantButton{
+    text-align: center;
+
+}
+
+#removePlantButton {
     margin-bottom: 20px;
     padding: 10px;
-  }
-  
-  
-  
-  .nav-icon.active-icon {
+}
+
+.reviewPage {
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+#plantReviewForm {
+    margin: 60px;
+}
+
+.submitReview {
+    margin-left: 15px;
+}
+
+.nav-icon.active-icon {
     filter: brightness(0) saturate(100%) invert(59%) sepia(98%) saturate(336%) hue-rotate(61deg) brightness(94%) contrast(92%);
     opacity: 1;
-  }
-  
-
+}

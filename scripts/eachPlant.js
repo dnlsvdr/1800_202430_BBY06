@@ -24,7 +24,7 @@ function displayPlantInfo() {
         let plantCareGuide = thisPlant.careGuide;     // Plant care guide
         let plantSunlight = thisPlant.sunlight;
         let plantWater = thisPlant.water;
-        let plantFertilize = thisPlant.fertilize;
+        let plantFertilize = thisPlant.fertilizer;
 
         document.getElementById("plantName").innerHTML = plantName;
         document.querySelector(".plant-img").src = plantImage;
