@@ -24,7 +24,7 @@ document.getElementById("signUpButton").addEventListener("click", function() {
     .then((userCredential) => {
         var user = userCredential.user;
         console.log("User registered:", user.email);
-        alert("Sign-up successful! You can now log in.");
+        alert("Sign-up successful!");
         window.location.href = "home.html"; 
     })
     .catch((error) => {

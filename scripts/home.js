@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const searchInput = document.getElementById("searchInput");
   const container = document.getElementById("plants-go-here");
 
-
   function calculateNextWaterDate(lastWaterDate, waterInterval) {
     // Convert the lastWaterDate into a Date object.
     let lastWater = new Date(lastWaterDate);
@@ -12,9 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     // Add the waterInterval days to the last water date.
     let nextWaterDate = new Date(lastWater.getTime() + waterInterval * msPerDay);
-    
-    // If the computed next water date is in the past, keep adding waterInterval days
-    // until the nextWaterDate is in the future.
+  
     while (nextWaterDate < new Date()) {
       lastWater = nextWaterDate;
       nextWaterDate = new Date(lastWater.getTime() + waterInterval * msPerDay);
@@ -22,16 +19,14 @@ document.addEventListener("DOMContentLoaded", function () {
     return nextWaterDate;
   }
   
-
   // Function to display plant cards based on an array of plant objects
   function displayCards(plantsArray) {
-   
     plantsArray.sort((a, b) => {
       const dateA = a.nextWaterDate instanceof Date ? a.nextWaterDate : new Date(8640000000000000);
       const dateB = b.nextWaterDate instanceof Date ? b.nextWaterDate : new Date(8640000000000000);
       return dateA - dateB;
     });
-    container.innerHTML = ""; // Clear container before displaying
+    container.innerHTML = ""; 
 
     if (plantsArray.length === 0) {
       container.innerHTML = "<p>No plants added</p>";
@@ -46,7 +41,6 @@ document.addEventListener("DOMContentLoaded", function () {
       newCard.querySelector(".water-date").innerHTML = `Water every ${plant.waterInterval} days`;
       newCard.querySelector(".next-water").innerHTML = `Next water: ${plant.nextWater}`;
       
-    
       let clickableCard = newCard.querySelector(".clickableCard");
       clickableCard.addEventListener("click", function () {
         window.location.href = "eachPlant.html?docID=" + plant.docID;
@@ -68,10 +62,8 @@ document.addEventListener("DOMContentLoaded", function () {
     displayCards(filteredPlants);
   }
 
-
   searchInput.addEventListener("keyup", filterAndDisplayCards);
 
-  
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
       const uid = user.uid;
@@ -87,10 +79,8 @@ document.addEventListener("DOMContentLoaded", function () {
             let nextWater;     
             let nextWaterDate; 
 
-           
             if (data.waterInterval && data.lastWaterDate) {
               waterIntervalDisplay = `${data.waterInterval}`;
-              
               nextWater = calculateNextWaterDate(data.lastWaterDate, data.waterInterval);
               nextWaterDisplay = nextWater.toDateString();
               nextWaterDate = nextWater;
@@ -110,6 +100,17 @@ document.addEventListener("DOMContentLoaded", function () {
               nextWaterDate: nextWaterDate           
             });
           });
+
+          // Check for plants that need watering today
+          const today = new Date().toDateString();
+          const plantsToWaterToday = allPlants.filter(plant =>
+            plant.nextWaterDate && new Date(plant.nextWaterDate).toDateString() === today
+          );
+          if (plantsToWaterToday.length > 0) {
+            const names = plantsToWaterToday.map(plant => plant.name).join(", ");
+            alert("Don't forget to water these plants today: " + names);
+          }
+
           filterAndDisplayCards();
         }, error => {
           console.error("Error loading plants:", error);
