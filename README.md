@@ -1,9 +1,9 @@
 # PlantPal
 
 ## Overview
-PlantPal is a web application designed to help plant lovers manage their houseplants more easily. The app simplifies plant care by offering a clean interface where users can explore plant information and set up personalized water reminders for each plant. Whether you're a beginner or a seasoned plant parent, PlantPal helps you stay consistent with your plant care routine.
+PlantPal is a web application designed to help plant lovers manage their houseplants more easily. The app offers a clean interface where users can explore plant information and set up personalized water reminders for each plant. Whether you're a beginner or a seasoned plant parent, PlantPal helps you stay consistent with your plant care routine.
 
-This project was developed for the COMP1800 course at BCIT, applying principles of user-centred design, mobile-first development, and agile project management. The app uses Firebase for its database.
+This project was developed for the COMP1800 course at BCIT, applying principles of user-centred design, and agile project management. The app uses Firebase for its database.
 
 ---
 
@@ -30,7 +30,7 @@ Example:
 Example:
 1. Open the app in your browser.
 2. Browse or add plants with care descriptions.
-3. Set watering intervals and track last watered dates.
+3. Set watering intervals and last watered dates.
 
 ---
 
@@ -87,7 +87,7 @@ Example:
 ### Limitations
 
 Example:
-- No notification system for reminders (currently relies on manual checking).
+- Cannot confirm that you watered a specific plant already so notification will continue to pop.
 - Cannot change username/email and password yet
 
 ### Future Work
