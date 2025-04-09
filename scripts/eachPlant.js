@@ -104,11 +104,10 @@ document.querySelector('.save-button').addEventListener('click', function() {
     .collection("plants")
     .doc(plantDocID)
     .update({
-      lastWaterDate: lastWaterDateInput, // Stored as YYYY-MM-DD
+      lastWaterDate: lastWaterDateInput, 
       waterInterval: parseInt(waterIntervalInput)
     })
     .then(() => {
-      // After updating water schedule, check if an update is needed, then redirect
       updateLastWaterDateIfPast(plantDocID).then(() => {
         window.location.href = "home.html";
       });

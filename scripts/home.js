@@ -101,7 +101,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
           });
 
-          // Check for plants that need watering today
           const today = new Date().toDateString();
           const plantsToWaterToday = allPlants.filter(plant =>
             plant.nextWaterDate && new Date(plant.nextWaterDate).toDateString() === today
@@ -117,4 +116,15 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
   });
+
+document.getElementById("logoutBtn").addEventListener("click", function () {
+  firebase.auth().signOut()
+    .then(function () {
+      window.location.href = "index.html";
+    })
+    .catch(function (error) {
+      console.error("Logout error:", error);
+    });
+});
+
 });
