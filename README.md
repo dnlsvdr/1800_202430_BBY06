@@ -9,7 +9,6 @@ This project was developed for the COMP1800 course at BCIT, applying principles 
 
 ## Features
 
-Example:
 - Add and view detailed plant profiles.
 - Set and save custom watering intervals for each plant.
 - Color theme customization.
@@ -18,7 +17,6 @@ Example:
 
 ## Technologies Used
 
-Example:
 - **Frontend**: HTML, CSS, Bootstrap, JavaScript
 - **Backend**: Firebase for hosting
 - **Database**: Firestore
@@ -27,7 +25,6 @@ Example:
 
 ## Usage
 
-Example:
 1. Open the app in your browser.
 2. Browse or add plants with care descriptions.
 3. Set watering intervals and last watered dates.
@@ -36,7 +33,6 @@ Example:
 
 ## Project Structure
 
-Example:
 ```
 1800_202430_BBY06/
 ├── fetch/
@@ -77,7 +73,6 @@ Example:
 
 ## Acknowledgments
 
-Example:
 - Firebase used for hosting and Firestore for storing plant data and user reviews.
 - 
 
@@ -86,20 +81,14 @@ Example:
 ## Limitations and Future Work
 ### Limitations
 
-Example:
 - Cannot confirm that you watered a specific plant already so notification will continue to pop.
 - Cannot change username/email and password yet
 
 ### Future Work
 
-Example: 
 - Allow users to upload their own plant photos.
 - Complete the review section, allowing users to submit and view reviews for each plant
 - Change username/email and password
 
 ---
 
-## License
-
-Example:
-This project is licensed under the MIT License. See the LICENSE file for details.
